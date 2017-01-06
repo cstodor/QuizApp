@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { CounterComponent } from './components/quiz/counter/counter.component';
+// Routing
+import { AppRoutingModule, appRouting, appRoutingProviders } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,11 @@ import { CounterComponent } from './components/quiz/counter/counter.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule,
+    appRouting
   ],
-  providers: [],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
