@@ -4,4 +4,9 @@
   <input type="checkbox" name="question">{{ quiz.options[1] }}
   <input type="checkbox" name="question">{{ quiz.options[2] }}
   <input type="checkbox" name="question">{{ quiz.options[3] }}
-</div>
+</div></div>
+{{ questionIndex }} / 5
+<button (click)="nextQuestion()">
+  <span *ngIf="questionIndex < 5">Next</span>
+  <span (click)="finishQuiz()" *ngIf="questionIndex > 4">Finish</span>
+</button>

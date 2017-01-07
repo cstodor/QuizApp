@@ -14,6 +14,7 @@ import { IQuiz } from '../../../../api/qaa';
 export class QuestionsAnswersComponent implements OnInit {
 
   private _quizQAUrl = "api/qaa.json";
+  questionIndex: number = 1;
 
   _quiz: IQuiz[];
   errorMessage: string;
@@ -22,18 +23,26 @@ export class QuestionsAnswersComponent implements OnInit {
 
   getQAAList(): Observable<IQuiz[]> {
     return this._http.get(this._quizQAUrl)
-      .map(response => <IQuiz[]>response.json().quizData) // we let the compiler know that the array contains items of type 'IQuiz' and return the 'quizData' object from the json file as an array
+      .map(response => <IQuiz[]>response.json().quizData)
   }
 
   getQAA(id: number): Observable<IQuiz> {
     return this.getQAAList()
       .map(questions => questions.find(question => question.id === id));
   }
+  nextQuestion() {
+    if (this.questionIndex < 5) {
+      this.questionIndex++;
+    }
+  }
+  finishQuiz() {
+
+  }
 
   ngOnInit(): void {
     this.getQAAList()
       .subscribe(
-      _quiz => this._quiz = _quiz, // set our local _parts array equal to the IProduct[] data which arrive from our data stream
+      _quiz => this._quiz = _quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
       error => this.errorMessage = <any>error);
   }
 }
