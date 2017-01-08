@@ -1,0 +1,14 @@
+.option {
+    padding: 10px 20px;
+    margin: 5px 0px;
+    cursor: pointer;
+    border: 1px solid #000;
+}
+.option:hover {
+    background: #eee;
+}
+.option.active {
+    background: #6bb96b;
+    color: #fff;
+    font-weight: bold;
+}
