@@ -1,10 +1,13 @@
+<hr>
 <div *ngFor="let quiz of _quiz | slice:(questionIndex-1):questionIndex">
   <h1>{{ quiz.question }}</h1>
-  <input type="checkbox" name="question">{{ quiz.options[0] }}<br/>
-  <input type="checkbox" name="question">{{ quiz.options[1] }}<br/>
-  <input type="checkbox" name="question">{{ quiz.options[2] }}<br/>
-  <input type="checkbox" name="question">{{ quiz.options[3] }}<br/>
+  <div [class]="'option option-' + i" *ngFor="let option of quiz.options; let i = index" (click)="selected(elem)" #elem>{{ option }}</div>
+  <hr>
+  <div>Selected Options: {{ selectedOptions }}</div>
+  <div>Answer: {{ quiz.answer }}</div>
+  <hr>
 </div>
+
 {{ questionIndex }} / 5
 <button (click)="nextQuestion()">
   <span *ngIf="questionIndex < 5">Next</span>
