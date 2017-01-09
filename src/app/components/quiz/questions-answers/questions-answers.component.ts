@@ -14,11 +14,11 @@ import { IQuiz } from '../../../../api/qaa';
 export class QuestionsAnswersComponent implements OnInit {
 
   private _quizQAUrl = "api/qaa.json";
-  questionIndex: number = 1;
-  // selectedOptions: Array<string> = []
-
-  _quiz: IQuiz[];
+  private _quiz: IQuiz[];
   errorMessage: string;
+
+  questionIndex: number = 1;
+  selectedOptions: Array<string> = [];
 
   constructor(private _http: Http) { }
 
@@ -35,16 +35,15 @@ export class QuestionsAnswersComponent implements OnInit {
 
   // selected options
   selected(elem: any) {
+
     elem.classList.toggle('active');
     var options = document.getElementsByClassName('active');
+    this.selectedOptions.length = 0;
 
     for (var i = 0; i < options.length; i++) {
-      let selectedOptions = options[i].innerHTML;
-      console.log('selectedOptions: ' + selectedOptions)
+      this.selectedOptions.push(options[i].innerHTML);
     }
-    console.log("number of selections: " + options.length);
   }
-
 
   // next question function
   nextQuestion() {
