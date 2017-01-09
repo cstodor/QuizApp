@@ -17,6 +17,7 @@ export class QuestionsAnswersComponent implements OnInit {
   private _quizQAUrl = "api/qaa.json";
   private _quiz: IQuiz[];
   private _answers: Array<string> = [];
+
   errorMessage: string;
 
   questionIndex: number = 1;
@@ -45,11 +46,13 @@ export class QuestionsAnswersComponent implements OnInit {
 
   // next question function
   nextQuestion() {
+
     if (this.questionIndex < this._quiz.length) {
       for (var i = this.questionIndex - 1; i < this.questionIndex; i++) {
-        if (this.selectedOptions /* === this._quiz[i].answer */) {
-          console.log("Selected Answer: " + this.selectedOptions)
-          console.log("Correct Answer: " + this._quiz[i].answer);
+        var selectedAnswers = String(this.selectedOptions);
+        var correctAnswer = String(this._quiz[i].answer);
+        if (selectedAnswers === correctAnswer) {
+          this.quizScore++;
           this.selectedOptions.length = 0;
         }
       }
