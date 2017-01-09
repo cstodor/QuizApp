@@ -11,5 +11,5 @@
 {{ questionIndex }} / 5
 <button (click)="nextQuestion()">
   <span *ngIf="questionIndex < 5">Next</span>
-  <span routerLink="/results" *ngIf="questionIndex > 4">Finish</span>
+  <span *ngIf="questionIndex > 4">Finish</span>
 </button>

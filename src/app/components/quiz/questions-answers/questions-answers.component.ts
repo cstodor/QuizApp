@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http'; // required for getting products from JSON file
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; // required by the .map method
+import { Router } from '@angular/router';
 
 // Data
 import { IQuiz } from '../../../../api/qaa';
@@ -20,7 +21,9 @@ export class QuestionsAnswersComponent implements OnInit {
   questionIndex: number = 1;
   selectedOptions: Array<string> = [];
 
-  constructor(private _http: Http) { }
+  constructor(
+    private _http: Http,
+    private router: Router) { }
 
   // get the list of the questions and answers as an observable
   getQAAList(): Observable<IQuiz[]> {
@@ -49,11 +52,10 @@ export class QuestionsAnswersComponent implements OnInit {
   nextQuestion() {
     if (this.questionIndex < 5) {
       this.questionIndex++;
+    } else {
+      console.log("Quiz Finished!");
+      this.router.navigate(['results']);
     }
-  }
-
-  finishQuiz() {
-
   }
 
   ngOnInit(): void {
