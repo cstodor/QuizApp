@@ -20,6 +20,7 @@ export class QuestionsAnswersComponent implements OnInit {
 
   questionIndex: number = 1;
   selectedOptions: Array<string> = [];
+  options = document.getElementsByClassName('active');
 
   constructor(
     private _http: Http,
@@ -30,27 +31,19 @@ export class QuestionsAnswersComponent implements OnInit {
     return this._http.get(this._quizQAUrl)
       .map(response => <IQuiz[]>response.json().quizData)
   }
-  // get one question and their answers by ID an an observable
-  getQAA(id: number): Observable<IQuiz> {
-    return this.getQAAList()
-      .map(questions => questions.find(question => question.id === id));
-  }
 
   // selected options
   selected(elem: any) {
-
-    elem.classList.toggle('active');
-    var options = document.getElementsByClassName('active');
+    elem.classList.toggle('active'); // adds/removes "active" CSS class to the elements that the user clicks on
     this.selectedOptions.length = 0;
-
-    for (var i = 0; i < options.length; i++) {
-      this.selectedOptions.push(options[i].innerHTML);
+    for (var i = 0; i < this.options.length; i++) {
+      this.selectedOptions.push(this.options[i].innerHTML);
     }
   }
 
   // next question function
   nextQuestion() {
-    if (this.questionIndex < 5) {
+    if (this.questionIndex < this._quiz.length) {
       this.questionIndex++;
     } else {
       console.log("Quiz Finished!");
