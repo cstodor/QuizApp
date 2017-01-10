@@ -16,11 +16,13 @@ export class QuestionsAnswersComponent implements OnInit {
 
   private _quizQAUrl = "api/qaa.json";
   private _quiz: IQuiz[];
+  private _answers: Array<string> = [];
   errorMessage: string;
 
   questionIndex: number = 1;
   selectedOptions: Array<string> = [];
   options = document.getElementsByClassName('active');
+  quizScore: number = 0;
 
   constructor(
     private _http: Http,
@@ -44,7 +46,15 @@ export class QuestionsAnswersComponent implements OnInit {
   // next question function
   nextQuestion() {
     if (this.questionIndex < this._quiz.length) {
+      for (var i = this.questionIndex - 1; i < this.questionIndex; i++) {
+        if (this.selectedOptions /* === this._quiz[i].answer */) {
+          console.log("Selected Answer: " + this.selectedOptions)
+          console.log("Correct Answer: " + this._quiz[i].answer);
+          this.selectedOptions.length = 0;
+        }
+      }
       this.questionIndex++;
+      this.selectedOptions.length = 0;
     } else {
       console.log("Quiz Finished!");
       this.router.navigate(['results']);

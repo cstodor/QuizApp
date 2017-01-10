@@ -3,12 +3,13 @@
   <h1>{{ quiz.question }}</h1>
   <div [class]="'option option-' + i" *ngFor="let option of quiz.options; let i = index" (click)="selected(elem)" #elem>{{ option }}</div>
   <hr>
-  <div>Selected Options: {{ selectedOptions }}</div>
+  <div>Selected: {{ selectedOptions }}</div>
   <div>Answer: {{ quiz.answer }}</div>
+  <div>Score: {{ quizScore }}</div>
   <hr>
+ <div>Question {{ questionIndex }} / {{ _quiz.length }}</div>
 </div>
 
-{{ questionIndex }} / 5
 <button (click)="nextQuestion()">
   <span *ngIf="questionIndex < 5">Next</span>
   <span *ngIf="questionIndex > 4">Finish</span>
