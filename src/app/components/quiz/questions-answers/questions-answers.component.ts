@@ -46,21 +46,20 @@ export class QuestionsAnswersComponent implements OnInit {
 
   // next question function
   nextQuestion() {
-
-    if (this.questionIndex < this._quiz.length) {
+    if (this.questionIndex <= this._quiz.length) {
       for (var i = this.questionIndex - 1; i < this.questionIndex; i++) {
         var selectedAnswers = String(this.selectedOptions);
         var correctAnswer = String(this._quiz[i].answer);
         if (selectedAnswers === correctAnswer) {
           this.quizScore++;
-          this.selectedOptions.length = 0;
+        }
+        if (this.questionIndex === this._quiz.length) {
+          console.log('Quiz Finished! Your Score is: ' + (this.quizScore / this._quiz.length) * 100 + '%');
+          this.router.navigate(['results']);
         }
       }
       this.questionIndex++;
       this.selectedOptions.length = 0;
-    } else {
-      console.log("Quiz Finished!");
-      this.router.navigate(['results']);
     }
   }
 
