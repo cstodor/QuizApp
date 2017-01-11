@@ -6,11 +6,14 @@ import { Router } from '@angular/router';
 
 // Data
 import { IQuiz } from '../../../../api/qaa';
+// Service 
+import { QuizService } from '../quiz.service';
 
 @Component({
   selector: 'app-questions-answers',
   templateUrl: './questions-answers.component.html',
-  styleUrls: ['./questions-answers.component.css']
+  styleUrls: ['./questions-answers.component.css'],
+  providers: [QuizService]
 })
 export class QuestionsAnswersComponent implements OnInit {
 
@@ -19,15 +22,15 @@ export class QuestionsAnswersComponent implements OnInit {
   private _answers: Array<string> = [];
 
   errorMessage: string;
-
   questionIndex: number = 1;
   selectedOptions: Array<string> = [];
-  options = document.getElementsByClassName('active');
+  activeOptions = document.getElementsByClassName('active');
   quizScore: number = 0;
 
   constructor(
     private _http: Http,
-    private router: Router) { }
+    private _router: Router,
+    private _quizService: QuizService) { }
 
   // get the list of the questions and answers as an observable
   getQAAList(): Observable<IQuiz[]> {
@@ -37,10 +40,10 @@ export class QuestionsAnswersComponent implements OnInit {
 
   // selected options
   selected(elem: any) {
-    elem.classList.toggle('active'); // adds/removes "active" CSS class to the elements that the user clicks on
+    elem.classList.toggle('active'); // toggles "active" CSS class on elements that the user clicks on
     this.selectedOptions.length = 0;
-    for (var i = 0; i < this.options.length; i++) {
-      this.selectedOptions.push(this.options[i].innerHTML);
+    for (var i = 0; i < this.activeOptions.length; i++) {
+      this.selectedOptions.push(this.activeOptions[i].innerHTML);
     }
   }
 
