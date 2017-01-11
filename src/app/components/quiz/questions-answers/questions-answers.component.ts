@@ -54,13 +54,19 @@ export class QuestionsAnswersComponent implements OnInit {
           this.quizScore++;
         }
         if (this.questionIndex === this._quiz.length) {
-          console.log('Quiz Finished! Your Score is: ' + (this.quizScore / this._quiz.length) * 100 + '%');
-          this.router.navigate(['results']);
+          this.calculateScore();
+          this._router.navigate(['results']);
         }
       }
       this.questionIndex++;
       this.selectedOptions.length = 0;
     }
+  }
+
+  calculateScore() {
+    this.quizScore = (this.quizScore / this._quiz.length) * 100;
+    console.log('Quiz Finished! Your Score is: ' + this.quizScore + '%');
+    return this.quizScore;
   }
 
   ngOnInit(): void {
