@@ -6,14 +6,11 @@ import { Router } from '@angular/router';
 
 // Data
 import { IQuiz } from '../../../../api/qaa';
-// Service 
-import { QuizService } from '../quiz.service';
 
 @Component({
   selector: 'app-questions-answers',
   templateUrl: './questions-answers.component.html',
-  styleUrls: ['./questions-answers.component.css'],
-  providers: [QuizService]
+  styleUrls: ['./questions-answers.component.css']
 })
 export class QuestionsAnswersComponent implements OnInit {
 
@@ -28,9 +25,7 @@ export class QuestionsAnswersComponent implements OnInit {
   quizScore: number = 0;
 
   constructor(
-    private _http: Http,
-    private _router: Router,
-    private _quizService: QuizService) { }
+    private _http: Http) { }
 
   // get the list of the questions and answers as an observable
   getQAAList(): Observable<IQuiz[]> {
