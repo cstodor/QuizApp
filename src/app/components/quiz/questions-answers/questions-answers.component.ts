@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http, Response } from '@angular/http'; // required for getting products from JSON file
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; // required by the .map method
-import { Router } from '@angular/router';
 
 // Data
 import { IQuiz } from '../../../../api/qaa';
@@ -14,7 +13,7 @@ import { IQuiz } from '../../../../api/qaa';
 })
 export class QuestionsAnswersComponent implements OnInit {
 
-  private _quizQAUrl = "api/qaa.json";
+  private _quizQAUrl = 'api/qaa.json';
   private _quiz: IQuiz[];
   private _answers: Array<string> = [];
 
@@ -23,6 +22,7 @@ export class QuestionsAnswersComponent implements OnInit {
   selectedOptions: Array<string> = [];
   activeOptions = document.getElementsByClassName('active');
   quizScore: number = 0;
+  @Output() scoreSend = new EventEmitter<number>();
 
   constructor(
     private _http: Http) { }
@@ -53,7 +53,6 @@ export class QuestionsAnswersComponent implements OnInit {
         }
         if (this.questionIndex === this._quiz.length) {
           this.calculateScore();
-          this._router.navigate(['results']);
         }
       }
       this.questionIndex++;
@@ -63,14 +62,13 @@ export class QuestionsAnswersComponent implements OnInit {
 
   calculateScore() {
     this.quizScore = (this.quizScore / this._quiz.length) * 100;
-    console.log('Quiz Finished! Your Score is: ' + this.quizScore + '%');
-    return this.quizScore;
+    this.scoreSend.emit(this.quizScore);
   }
 
   ngOnInit(): void {
     this.getQAAList()
       .subscribe(
-      _quiz => this._quiz = _quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
+      quiz => this._quiz = quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
       error => this.errorMessage = <any>error);
   }
 }
