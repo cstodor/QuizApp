@@ -1,11 +1,6 @@
-<hr>
 <div *ngFor="let quiz of _quiz | slice:(questionIndex-1):questionIndex">
   <h1>{{ quiz.question }}</h1>
   <div [class]="'option option-' + i" *ngFor="let option of quiz.options; let i = index" (click)="selected(elem)" #elem>{{ option }}</div>
-  <hr>
-  <div>Selected: {{ selectedOptions }}</div>
-  <div>Answer: {{ quiz.answer }}</div>
-  <div>Score: {{ quizScore }}</div>
   <hr>
  <div>Question {{ questionIndex }} / {{ _quiz.length }}</div>
 </div>
