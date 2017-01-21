@@ -1,2 +1,15 @@
-<app-counter></app-counter>
-<app-questions-answers></app-questions-answers>
+<div classs="quiz" *ngIf="score === null">
+    <div class="counter">
+        <app-counter></app-counter>
+    </div>
+    <hr>
+    <div class="qa">
+        <app-questions-answers (scoreSend)="handleScore($event)"></app-questions-answers>
+    </div>
+</div>
+<div class="results" *ngIf="score !== null">
+    <div>{{ score }}%</div>
+    <div>
+        <button routerLink="/">Back to Home</button>
+    </div>
+</div>
