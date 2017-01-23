@@ -1,0 +1,40 @@
+.quiz {
+    padding: 1rem 0;
+    max-width: 1024px;
+    margin: auto;
+}
+.counter {
+    background: #2b6db3;
+    color:#fff;
+    padding: 0.25rem 0;
+}
+.qa {
+    background: #fff;
+    padding: 1rem;
+}
+.results {
+    background: #fff;
+    max-width: 1024px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+.score {
+    font-size: 2rem;
+    margin-bottom: 2rem
+}
+.score > div {
+    font-size: 4rem;
+    font-weight: bold;
+}
+.results button {
+    max-width: 50%;
+    padding: 0.5rem 2rem;
+    border: 1px solid #a77c2a;
+    border-radius: 6px;
+    background: #ce4a34;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
