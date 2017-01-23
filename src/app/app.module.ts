@@ -10,6 +10,8 @@ import { CounterComponent } from './components/quiz/counter/counter.component';
 import { QuestionsAnswersComponent } from './components/quiz/questions-answers/questions-answers.component';
 // Routing
 import { AppRoutingModule, appRouting, appRoutingProviders } from './app-routing.module';
+// Service
+import { QuizService } from './components/quiz/quiz.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { AppRoutingModule, appRouting, appRoutingProviders } from './app-routing
     AppRoutingModule,
     appRouting
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, QuizService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
