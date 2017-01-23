@@ -1,11 +1,10 @@
 <div *ngFor="let quiz of _quiz | slice:(questionIndex-1):questionIndex">
-  <h1>{{ quiz.question }}</h1>
+  <div class="question-index">Question {{ questionIndex }} / {{ _quiz.length }}</div>
+  <p class="question">{{ quiz.question }}</p>
   <div [class]="'option option-' + i" *ngFor="let option of quiz.options; let i = index" (click)="selected(elem)" #elem>{{ option }}</div>
-  <hr>
- <div>Question {{ questionIndex }} / {{ _quiz.length }}</div>
 </div>
 
-<button (click)="nextQuestion()">
-  <span *ngIf="questionIndex < 5">Next Question</span>
-  <span *ngIf="questionIndex > 4">Finish Quiz</span>
-</button>
+<div class="navigation" (click)="nextQuestion()">
+  <button *ngIf="questionIndex < _quiz?.length">Next Question</button>
+  <button *ngIf="questionIndex > (_quiz?.length - 1)">Finish Quiz</button>
+</div>
