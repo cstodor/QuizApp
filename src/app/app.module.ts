@@ -12,6 +12,7 @@ import { QuestionsAnswersComponent } from './components/quiz/questions-answers/q
 import { AppRoutingModule, appRouting, appRoutingProviders } from './app-routing.module';
 // Service
 import { QuizService } from './components/quiz/quiz.service';
+import { ResultsComponent } from './components/quiz/results/results.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { QuizService } from './components/quiz/quiz.service';
     HomeComponent,
     QuizComponent,
     CounterComponent,
-    QuestionsAnswersComponent
+    QuestionsAnswersComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
