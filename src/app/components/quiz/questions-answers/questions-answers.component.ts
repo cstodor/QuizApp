@@ -1,10 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http'; // required for getting products from JSON file
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; // required by the .map method
 
 // Data
 import { IQuiz } from '../../../../api/qaa';
+// Service
+import { QuizService } from '../quiz.service';
 
 @Component({
   selector: 'app-questions-answers',
@@ -22,10 +24,10 @@ export class QuestionsAnswersComponent implements OnInit {
   selectedOptions: Array<string> = [];
   activeOptions = document.getElementsByClassName('active');
   quizScore: number = 0;
-  @Output() scoreSend = new EventEmitter<number>();
 
   constructor(
-    private _http: Http) { }
+    private _http: Http,
+    private _quizService: QuizService) { }
 
   // get the list of the questions and answers as an observable
   getQAAList(): Observable<IQuiz[]> {
@@ -62,7 +64,8 @@ export class QuestionsAnswersComponent implements OnInit {
 
   calculateScore() {
     this.quizScore = (this.quizScore / this._quiz.length) * 100;
-    this.scoreSend.emit(this.quizScore);
+    this._quizService.quizDone(true);
+    this._quizService.quizScore(this.quizScore)
   }
 
   ngOnInit(): void {
