@@ -6,12 +6,17 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
-import { CounterComponent } from './components/quiz/counter/counter.component';
 import { QuestionsAnswersComponent } from './components/quiz/questions-answers/questions-answers.component';
 // Routing
 import { AppRoutingModule, appRouting, appRoutingProviders } from './app-routing.module';
 // Service
 import { QuizService } from './components/quiz/quiz.service';
+// Components
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { TimerComponent } from './components/quiz/timer/timer.component';
+import { QuestionsAnswersComponent } from './components/quiz/questions-answers/questions-answers.component';
 import { ResultsComponent } from './components/quiz/results/results.component';
 
 @NgModule({
@@ -19,7 +24,7 @@ import { ResultsComponent } from './components/quiz/results/results.component';
     AppComponent,
     HomeComponent,
     QuizComponent,
-    CounterComponent,
+    TimerComponent,
     QuestionsAnswersComponent,
     ResultsComponent
   ],

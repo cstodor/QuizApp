@@ -1,9 +1,4 @@
-.quiz {
-    padding: 1rem 0;
-    max-width: 1024px;
-    margin: auto;
-}
-.counter {
+.timer {
     background: #2b6db3;
     color:#fff;
     padding: 0.25rem 0;

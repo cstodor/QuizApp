@@ -4,15 +4,20 @@ import { Component, OnInit, DoCheck, AfterViewChecked } from '@angular/core';
 import { QuizService } from '../quiz.service';
 
 @Component({
-  selector: 'app-counter',
-  templateUrl: './counter.component.html',
-  styleUrls: ['./counter.component.css']
+  selector: 'app-timer',
+  templateUrl: './timer.component.html',
+  styleUrls: ['./timer.component.css']
 })
-export class CounterComponent implements OnInit {
+export class TimerComponent implements OnInit {
+
+  secLeft: any; // get time from msLeft variable
 
   constructor(private _quizService: QuizService) { }
 
   ngOnInit() {
+
+    var self = this;
+
     function countdown(elem, min, sec) {
       var element, endTime, hours, mins, msLeft, time;
 
@@ -22,6 +27,9 @@ export class CounterComponent implements OnInit {
 
       function updateTimer() {
         msLeft = endTime - (+new Date);
+        var secondsLeft = Math.round(msLeft / 1000)
+        self.secLeft = secondsLeft;
+
         if (msLeft < 1000) {
           element.innerHTML = "Time is up!";
         } else {
@@ -31,20 +39,22 @@ export class CounterComponent implements OnInit {
           element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
           setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
         }
+        return secondsLeft;
       }
-      
+
       element = document.getElementById(elem);
       endTime = (+new Date) + 1000 * (60 * min + sec) + 500;
 
       updateTimer();
+
     }
-    countdown("counter", 1, 0);
+
+    countdown("timer", 0, 10);
   }
 
   ngDoCheck() {
-    // console.log('CHECK!');
-    if (document.getElementById('counter').innerHTML === "Time is up!") {
-      console.log('TIME\'S UP!');
+    this._quizService.timeLeft(this.secLeft);
+    if (this.secLeft === 0) {
       this._quizService.quizDone(true);
     }
   }
