@@ -1,19 +1,12 @@
 const mongoose = require('mongoose')
-// const dbConfig = require('../config/db')
+const Schema = mongoose.Schema
 
 // Quiz Schema
-const QuestionSchema = mongoose.Schema({
+const QuestionSchema = new Schema({
     id: Number,
     question: String,
     options: Array,
     answer: Array
 })
 
-const Question = module.exports = mongoose.model('Question', QuestionSchema)
-
-// Get Question By ID
-module.exports.getQuestionById = function (id, callback) {
-    Question.findById(id, callback)
-    console.log("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY")
-    // res.send("QUestion")
-}
+module.exports = mongoose.model('Question', QuestionSchema)
