@@ -22,6 +22,7 @@ export class QuizComponent {
   // Checks if Quiz is Finished
   ngDoCheck() {
     if (this._quizService.isQuizDone === true) {
+      this.score = this._quizService.score;
       this.isQuizDone = this._quizService.isQuizDone;
     }
   }

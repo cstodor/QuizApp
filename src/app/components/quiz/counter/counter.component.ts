@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterViewChecked } from '@angular/core';
+
+// Service
+import { QuizService } from '../quiz.service';
 
 @Component({
   selector: 'app-counter',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CounterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _quizService: QuizService) { }
 
   ngOnInit() {
     function countdown(elem, min, sec) {
@@ -29,13 +32,21 @@ export class CounterComponent implements OnInit {
           setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
         }
       }
-
+      
       element = document.getElementById(elem);
       endTime = (+new Date) + 1000 * (60 * min + sec) + 500;
+
       updateTimer();
     }
+    countdown("counter", 0, 10);
+  }
 
-    countdown("counter", 5, 0);
+  ngDoCheck() {
+    console.log('CHECK!');
+    if (document.getElementById('counter').innerHTML === "Time is up!") {
+      console.log('TIME\'S UP!');
+      this._quizService.quizDone(true);
+    }
   }
 
 }

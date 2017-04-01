@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Http, Response } from '@angular/http'; // required for getting products from JSON file
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; // required by the .map method
 
 // Data
-import { IQuiz } from '../../../../api/qaa';
+import { IQuiz } from 'api/qaa';
 // Service
 import { QuizService } from '../quiz.service';
 
@@ -15,7 +15,7 @@ import { QuizService } from '../quiz.service';
 })
 export class QuestionsAnswersComponent implements OnInit {
 
-  private _quizQAUrl = 'api/qaa.json';
+  private _quizQAUrl = 'src/api/qaa.json';
   private _quiz: IQuiz[];
   private _answers: Array<string> = [];
 
@@ -73,5 +73,10 @@ export class QuestionsAnswersComponent implements OnInit {
       .subscribe(
       quiz => this._quiz = quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
       error => this.errorMessage = <any>error);
+  }
+
+  ngDoCheck() {
+    console.log('Score Sent');
+    this._quizService.quizScore(this.quizScore * 10)
   }
 }
