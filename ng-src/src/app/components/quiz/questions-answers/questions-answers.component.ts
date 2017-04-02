@@ -1,10 +1,4 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { Http, Response } from '@angular/http'; // required for getting products from JSON file
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'; // required by the .map method
-
-// Data
-// import { IQuiz } from 'api/qaa';
 // Service
 import { QuizService } from '../quiz.service';
 
@@ -15,29 +9,18 @@ import { QuizService } from '../quiz.service';
 })
 export class QuestionsAnswersComponent implements OnInit {
 
-  // private _quizQAUrl = 'src/api/qaa.json';
-  _quiz: Object;
-  private _answers: Array<string> = [];
-
-  errorMessage: string;
+  _quiz: any;
   questionIndex: number = 1;
   selectedOptions: Array<string> = [];
   activeOptions = document.getElementsByClassName('active');
   quizScore: number = 0;
+  secLeft: number = this._quizService.time;
 
-  constructor(
-    private _http: Http,
-    private _quizService: QuizService) { }
-
-  // get the list of the questions and answers as an observable
-  // getQAAList(): Observable<IQuiz[]> {
-  //   return this._http.get(this._quizQAUrl)
-  //     .map(response => <IQuiz[]>response.json().quizData)
-  // }
+  constructor(private _quizService: QuizService) { }
 
   // selected options
   selected(elem: any) {
-    elem.classList.toggle('active'); // toggles "active" CSS class on elements that the user clicks on
+    elem.classList.toggle('active');
     this.selectedOptions.length = 0;
     for (var i = 0; i < this.activeOptions.length; i++) {
       this.selectedOptions.push(this.activeOptions[i].innerHTML);
@@ -46,14 +29,14 @@ export class QuestionsAnswersComponent implements OnInit {
 
   // next question function
   nextQuestion() {
-    if (this.questionIndex <= 10/*this._quiz.length*/) {
-      for (var i = this.questionIndex - 1; i < this.questionIndex; i++) {
+    if (this.questionIndex <= this._quiz.length) {
+      for (let i = this.questionIndex - 1; i < this.questionIndex; i++) {
         var selectedAnswers = String(this.selectedOptions);
-        //var correctAnswer = String(this._quiz[i].answer);
-        if (selectedAnswers /*=== correctAnswer*/) {
+        var correctAnswer = String(this._quiz[i].answer);
+        if (selectedAnswers === correctAnswer) {
           this.quizScore++;
         }
-        if (this.questionIndex === 10/*this._quiz.length*/) {
+        if (this.questionIndex === this._quiz.length) {
           this.calculateScore();
         }
       }
@@ -63,20 +46,21 @@ export class QuestionsAnswersComponent implements OnInit {
   }
 
   calculateScore() {
-    this.quizScore = (this.quizScore / 10/*this._quiz.length*/) * 100;
+    this.quizScore = (this.quizScore / this._quiz.length) * 100;
     this._quizService.quizDone(true);
-    this._quizService.quizScore(this.quizScore)
+    this._quizService.quizScore(this.quizScore);
   }
 
+
   ngOnInit() {
-    // this.getQAAList()
-    //   .subscribe(
-    //   quiz => this._quiz = quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
-    //   error => this.errorMessage = <any>error);
+
+
+
+    // get quiz data
     this._quizService.getQuizData().subscribe(quiz => {
       this._quiz = quiz.questions;
     },
-      // observables can also return an error
+      // error
       err => {
         console.log(err);
         return false;
@@ -85,7 +69,10 @@ export class QuestionsAnswersComponent implements OnInit {
   }
 
   ngDoCheck() {
-    // console.log('Score Sent');
-    this._quizService.quizScore(this.quizScore * 10)
+    // get timer value
+    this.secLeft = this._quizService.time;
+    if (this.secLeft === 0) {
+      this._quizService.quizScore(this.quizScore * 10)
+    }
   }
 }

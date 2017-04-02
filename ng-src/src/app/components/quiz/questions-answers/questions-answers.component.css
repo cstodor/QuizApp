@@ -1,5 +1,5 @@
 .question-index {
-    padding: 1rem 0;
+    padding-bottom: 1rem;
 }
 .question {
     font-size: 1.25rem;
@@ -28,12 +28,33 @@
 .navigation {
     margin-top: 1rem;
 }
-.navigation > button {
-    padding: 0.5rem 2rem;
-    border: 1px solid #a77c2a;
+.finish-quiz {
+    font-weight: bold;
+}
+.modal-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.7);
+}
+.modal {
+    position: absolute;
+    width: 50%;
+    min-width: 320px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 2rem 0;
+    background: #fff;
+    border: 1px solid #eee;
     border-radius: 6px;
-    background: #ce4a34;
-    color: #fff;
-    cursor: pointer;
-    outline: none;
+}
+.modal-title {
+    font-size: 2rem;
+    margin-top: 0;
+}
+.check-results {
+    margin-top: 1rem;
 }
