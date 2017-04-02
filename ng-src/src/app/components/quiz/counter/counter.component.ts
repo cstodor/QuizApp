@@ -38,11 +38,11 @@ export class CounterComponent implements OnInit {
 
       updateTimer();
     }
-    countdown("counter", 0, 10);
+    countdown("counter", 1, 0);
   }
 
   ngDoCheck() {
-    console.log('CHECK!');
+    // console.log('CHECK!');
     if (document.getElementById('counter').innerHTML === "Time is up!") {
       console.log('TIME\'S UP!');
       this._quizService.quizDone(true);

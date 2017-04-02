@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; // required by the .map method
 
 // Data
-import { IQuiz } from 'api/qaa';
+// import { IQuiz } from 'api/qaa';
 // Service
 import { QuizService } from '../quiz.service';
 
@@ -15,8 +15,8 @@ import { QuizService } from '../quiz.service';
 })
 export class QuestionsAnswersComponent implements OnInit {
 
-  private _quizQAUrl = 'src/api/qaa.json';
-  private _quiz: IQuiz[];
+  // private _quizQAUrl = 'src/api/qaa.json';
+  _quiz: Object;
   private _answers: Array<string> = [];
 
   errorMessage: string;
@@ -30,10 +30,10 @@ export class QuestionsAnswersComponent implements OnInit {
     private _quizService: QuizService) { }
 
   // get the list of the questions and answers as an observable
-  getQAAList(): Observable<IQuiz[]> {
-    return this._http.get(this._quizQAUrl)
-      .map(response => <IQuiz[]>response.json().quizData)
-  }
+  // getQAAList(): Observable<IQuiz[]> {
+  //   return this._http.get(this._quizQAUrl)
+  //     .map(response => <IQuiz[]>response.json().quizData)
+  // }
 
   // selected options
   selected(elem: any) {
@@ -46,14 +46,14 @@ export class QuestionsAnswersComponent implements OnInit {
 
   // next question function
   nextQuestion() {
-    if (this.questionIndex <= this._quiz.length) {
+    if (this.questionIndex <= 10/*this._quiz.length*/) {
       for (var i = this.questionIndex - 1; i < this.questionIndex; i++) {
         var selectedAnswers = String(this.selectedOptions);
-        var correctAnswer = String(this._quiz[i].answer);
-        if (selectedAnswers === correctAnswer) {
+        //var correctAnswer = String(this._quiz[i].answer);
+        if (selectedAnswers /*=== correctAnswer*/) {
           this.quizScore++;
         }
-        if (this.questionIndex === this._quiz.length) {
+        if (this.questionIndex === 10/*this._quiz.length*/) {
           this.calculateScore();
         }
       }
@@ -63,20 +63,29 @@ export class QuestionsAnswersComponent implements OnInit {
   }
 
   calculateScore() {
-    this.quizScore = (this.quizScore / this._quiz.length) * 100;
+    this.quizScore = (this.quizScore / 10/*this._quiz.length*/) * 100;
     this._quizService.quizDone(true);
     this._quizService.quizScore(this.quizScore)
   }
 
-  ngOnInit(): void {
-    this.getQAAList()
-      .subscribe(
-      quiz => this._quiz = quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
-      error => this.errorMessage = <any>error);
+  ngOnInit() {
+    // this.getQAAList()
+    //   .subscribe(
+    //   quiz => this._quiz = quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
+    //   error => this.errorMessage = <any>error);
+    this._quizService.getQuizData().subscribe(quiz => {
+      this._quiz = quiz.questions;
+    },
+      // observables can also return an error
+      err => {
+        console.log(err);
+        return false;
+      }
+    );
   }
 
   ngDoCheck() {
-    console.log('Score Sent');
+    // console.log('Score Sent');
     this._quizService.quizScore(this.quizScore * 10)
   }
 }
