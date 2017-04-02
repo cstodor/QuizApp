@@ -5,19 +5,21 @@
 /// Dev Dependensies 
 const express = require('express')
 const path = require('path')
+const bodyParser = require('body-parser') // grabs information from the POST data form.
+const cors = require('cors')
 const mongoose = require('mongoose')
-const publicUrl = 'public/index.html';
-
+const publicUrl = 'public/index.html'
 
 // Client Routes
 const routeQuiz = require('./routes/quiz-routes')
+const routeResults = require('./routes/results-routes')
 
 // Config Files
 const dbConfig = require('./config/db')
 
 // Server & Port Init
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000
 
 // Database Connection Mongoose
 mongoose.connect(dbConfig.database)
@@ -28,29 +30,28 @@ mongoose.connection.on('error', (err) => {
     console.log('Database error ' + err)
 })
 
-// Database Connecition to MongoDB Atlas (https://docs.atlas.mongodb.com/driver-connection/?_ga=1.79785943.1385989390.1483376091#node-js-driver-example)
-// var MongoClient = require('mongodb').MongoClient;
+// CORS Middleware
+app.use(cors())
 
-// var uri = "MONGO DB CONFIG";
-// MongoClient.connect(uri, function(err, db) {
-//   db.close();
-// });
+// Body Parser Middleware
+app.use(bodyParser.json())
 
-// Set public folder
+// Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(port, function () {
-  console.log('Server started on port: ' + port)
+    console.log('Server started on port: ' + port)
 })
 
 // API Routes
 app.use('/api/quiz', routeQuiz)
+app.use('/api/scores', routeResults)
 
 // Server Routes
 app.get('/', (req, res) => {
     res.send('Error: Cannot reach for public files!')
-});
+})
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, publicUrl));
+    res.sendFile(path.join(__dirname, publicUrl))
 })

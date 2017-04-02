@@ -11,6 +11,8 @@
     "license": "ISC",
     "dependencies": {
         "express": "*",
+        "body-parser": "1.17.1",
+        "cors": "*",
         "mongoose": "*"
     },
     "repository": {

@@ -1,19 +1,22 @@
-// Quiz Routes
-
 // Dependencies
-const express = require('express') // Express
-const routerQuiz = express.Router() // Express Routrer
-// const mongoose = require('mongoose') // Mongoose - for post requests???
+const express = require('express')
+const routerQuiz = express.Router()
 
 // Models
-//const questionsModel = require('../models/question') // Questions Model
-
-// Configs
-//const dbConfig = require('../config/db') // Database Config
+const questionsModel = require('../models/question')
 
 // Routes
 routerQuiz.get('/', (req, res, next) => {
-    res.json({ questions: req.questions })
+
+    // Get All Questions
+    questionsModel.find({}, function (err, items) {
+        if (err) {
+            console.log(err)
+            res.json({ err: err })
+        } else {
+            res.json({ questions: items })
+        }
+    })
 })
 
 // Export this Module
