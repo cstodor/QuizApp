@@ -1,0 +1,28 @@
+.high-scores {
+    padding: 1rem 2rem 2rem;
+}
+.high-scores ul {
+    padding: 0;
+}
+.high-scores h3 {
+    text-align: center;
+}
+.btn-home {
+    max-width: 50%;
+}
+li.result {
+    list-style: none;
+    border-bottom: 1px solid #eee;
+    padding: 0.5rem 0;
+    font-size: 1.4rem;
+}
+.name, .score, .date {
+    width: 32%;
+    display: inline-block;
+}
+.score-index {
+    float: left
+}
+.score {
+    font-weight: bold;
+}
