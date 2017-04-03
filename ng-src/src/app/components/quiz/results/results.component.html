@@ -1,6 +1,15 @@
 <div class="score">Your result is:
   <div>{{ quizScore }}%</div>
 </div>
+<div class="register-score">
+  <form (submit)="registerScore()">
+    <p>Enter your name to register score:</p>
+    <label for="name" class="hidden">Name</label>
+    <input type="text" [(ngModel)]="name" class="name" name="name" placeholder="Enter Your Name">
+    <button class="btn-register">Register Score</button>
+  </form>
+</div>
 <div>
-  <button class="btn-home" routerLink="/">Back to Home</button>
+  <button class="btn-home btn-primary" routerLink="/">BACK TO HOME</button>
+  <button class="btn-scores btn-primary" routerLink="/high-scores">HIGH SCORES</button>
 </div>
