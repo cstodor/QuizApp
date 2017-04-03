@@ -3,14 +3,6 @@
     color:#fff;
     padding: 0.25rem 0;
 }
-.qa {
-    background: #fff;
-    padding: 1rem;
-}
-.results {
-    background: #fff;
-    max-width: 1024px;
-    margin: 2rem auto;
+.qa, .results {
     padding: 2rem;
-    text-align: center;
 }
