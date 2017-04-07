@@ -1,4 +1,4 @@
 module.exports = {
-    database: 'mongodb://localhost:27017/autobonto',
+    database: 'mongodb://localhost:27017/quizapp',
     secret: 'MySecretKey'
 }
