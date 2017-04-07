@@ -1,4 +1,4 @@
 module.exports = {
-    //database: 'ADD YOUR DB INFORMATION HERE',
-    //secret: 'ADD SECRET KEY HERE (OPTIONAL)'
+    database: 'mongodb://localhost:27017/autobonto',
+    secret: 'MySecretKey'
 }
