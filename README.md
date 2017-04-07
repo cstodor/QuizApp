@@ -29,7 +29,7 @@ This repository contains the code for a RESTful API that was built using the MEA
 <p>The quickest way to get started is to clone the project and utilize it like this:</p>
 <p>1. Install dependencies from root folder using your command line:</p>
 <pre><code>npm install</code></pre>
-<p>Optionally you can install <a href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon</a> which will monitor your source code and automatically restarts your server when detects any changes. To install nodemon use:</p>
+<p>- optionally you can install <a href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon</a> which will monitor your source code and automatically restarts your server when detects any changes. To install nodemon use:</p>
 <pre><code>npm install -g nodemon</code></pre>
 <p>2. After installation is finished use:</p>
 <pre><code>node server</code></pre>
