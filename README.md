@@ -33,6 +33,8 @@ This repository contains the code for a RESTful API that was built using the MEA
 <pre><code>npm install -g nodemon</code></pre>
 <p>2. After installation is finished use:</p>
 <pre><code>node server</code></pre>
+<p>or use this command if you've installed nodemon:</p>
+<pre><code>nodemon server</code></pre>
 <p>3. Then open your browser and go to:</p>
 <pre><code>http://localhost:5000</code></pre>
 
