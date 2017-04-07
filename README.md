@@ -1,6 +1,6 @@
 # A simple MEAN stack Quiz Application
 MEAN Stack QuizApp is built with a collection of JavaScript based technologies from Client to Server to Database.
-This repository contains the code for a RESTful API Quiz Application that was built using the MEAN stack:
+This repository contains the code for a RESTful API that was built using the MEAN stack:
 
 <ul>
 <li>MongoDB</li>
