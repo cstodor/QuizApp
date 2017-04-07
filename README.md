@@ -22,6 +22,7 @@ This repository contains the code for a RESTful API that was built using the MEA
 <li>Body Parser - populates req.body with the value of the POST parameter.</li>
 <li>CORS - Cross-Origin Resource Sharing. Enables requests of resources from a different domain.</li>
 <li>Angular 4 - a structural JavaScript framework for dynamic web apps.</li>
+<li>Angular CLI - a command line interface to scaffold and build Angular apps using NodeJS style.</li>
 </ul>
 
 # Quick Install
@@ -32,3 +33,12 @@ This repository contains the code for a RESTful API that was built using the MEA
 <pre><code>node server</code></pre>
 <p>Then open your browser and go to:</p>
 <pre><code>http://localhost:5000</code></pre>
+
+# License
+<p>(The MIT License)</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
