@@ -1,0 +1,18 @@
+<div *ngFor="let quiz of _quiz | slice:(questionIndex-1):questionIndex">
+  <div class="question-index">Question {{ questionIndex }} / {{ _quiz.length }}</div>
+  <p class="question">{{ quiz.question }}</p>
+  <div [class]="'option option-' + i" *ngFor="let option of quiz.options; let i = index" (click)="selected(elem)" #elem>{{ option }}</div>
+</div>
+
+<div class="navigation">
+  <button *ngIf="questionIndex < _quiz?.length" class="btn-primary" (click)="nextQuestion()">Next Question</button>
+  <button *ngIf="questionIndex > (_quiz?.length - 1)" class="finish-quiz btn-primary" (click)="nextQuestion()">Finish Quiz</button>
+</div>
+
+<div *ngIf="secLeft < 1" class="modal-container">
+  <div class="modal text-center">
+    <p class="modal-title">Time's up!</p>
+    <p>Click on the button below to check your result.</p>
+    <button class="btn-primary check-results" (click)="nextQuestion()">Check Your Result</button>
+  </div>
+</div>

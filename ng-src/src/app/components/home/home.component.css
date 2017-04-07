@@ -1,0 +1,7 @@
+.home {
+    padding: 2rem 0;
+}
+.btn-start,
+.btn-scores {
+    max-width: 80%;
+}

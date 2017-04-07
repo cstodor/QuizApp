@@ -1,0 +1,16 @@
+.score {
+    font-size: 2rem;
+    margin-bottom: 2rem
+}
+.score > div {
+    font-size: 4rem;
+    font-weight: bold;
+}
+.register-score {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+.btn-home,
+.btn-scores {
+    max-width: 80%;
+}

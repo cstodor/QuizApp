@@ -1,0 +1,8 @@
+.timer {
+    background: #2b6db3;
+    color:#fff;
+    padding: 0.25rem 0;
+}
+.qa, .results {
+    padding: 2rem;
+}

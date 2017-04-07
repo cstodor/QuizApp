@@ -1,0 +1,13 @@
+<div class="inner-container">
+    <div *ngIf="isQuizDone === false">
+        <div class="timer">
+            <app-timer></app-timer>
+        </div>
+        <div class="qa">
+            <app-questions-answers></app-questions-answers>
+        </div>
+    </div>
+    <div class="results text-center" *ngIf="isQuizDone === true">
+        <app-results (sendScore)="handleScore($event)"></app-results>
+    </div>
+</div>
