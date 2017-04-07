@@ -21,5 +21,5 @@ This repository contains the code for a RESTful API Quiz Application that was bu
 <li>Mongoose - a NodeJS library that provides MongoDB object mapping.</li>
 <li>Body Parser - populates req.body with the value of the POST parameter.</li>
 <li>CORS - Cross-Origin Resource Sharing. Enables requests of resources from a different domain.</li>
-<li>Angular 4 - a structural framework for dynamic web apps.<li>
+<li>Angular 4 - a structural framework for dynamic web apps.</li>
 </ul>
