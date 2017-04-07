@@ -3,9 +3,9 @@
   <ul *ngIf="highScores">
     <li *ngFor="let score of highScores | slice: 0:10;  let i = index" class="result">
       <span class="name">
-        <span class="score-index">{{ i + 1 }}</span>{{ score.name }}
+        <span class="score-index">{{ i + 1 }}.</span>{{ score.name }}
       </span>
-      <span class="score">{{ score.score }}</span>
+      <span class="score">{{ score.score }}%</span>
       <span class="date">{{ score.date | date }}</span>
     </li>
   </ul>

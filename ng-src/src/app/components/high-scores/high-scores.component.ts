@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 // Service
 import { QuizService } from '../quiz/quiz.service';
 
@@ -14,6 +15,7 @@ export class HighScoresComponent implements OnInit {
   constructor(private _quizService: QuizService) { }
 
   ngOnInit() {
+
     // Get High Scores
     this._quizService.getHighScores().subscribe(highScores => {
 
@@ -37,8 +39,6 @@ export class HighScoresComponent implements OnInit {
         return false;
       }
     );
-
-
 
   }
 

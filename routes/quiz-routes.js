@@ -2,10 +2,10 @@
 const express = require('express')
 const routerQuiz = express.Router()
 
-// Models
+// Model
 const questionsModel = require('../models/question')
 
-// Routes
+// Quiz API Routes (api/quiz/)
 routerQuiz.get('/', (req, res, next) => {
 
     // Get All Questions
@@ -17,6 +17,7 @@ routerQuiz.get('/', (req, res, next) => {
             res.json({ questions: items })
         }
     })
+
 })
 
 // Export this Module

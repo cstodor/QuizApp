@@ -1,7 +1,8 @@
+// Dependencies
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-// Quiz Schema
+// Result Schema
 const ResultSchema = new Schema({
     name: String,
     score: Number,
@@ -15,7 +16,7 @@ module.exports.getResultsByName = function (name, callback) {
     const query = { name: name }
     Result.find(query, callback)
 }
-
+// Register Quiz Result
 module.exports.registerResult = function (newResult, callback) {
     newResult.save(callback)
 }

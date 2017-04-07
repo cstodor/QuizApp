@@ -2,11 +2,12 @@
 const express = require('express')
 const routerResults = express.Router()
 
-// Models
+// Model
 const Result = require('../models/results')
 
-// Register score
+// Result API Routes (api/scores/)
 routerResults.post('/save', (req, res, next) => {
+
     // Create Result Object for Registration
     let newResult = new Result({
         name: req.body.name,
@@ -17,17 +18,17 @@ routerResults.post('/save', (req, res, next) => {
     // Register Result Object
     Result.registerResult(newResult, (err, result) => {
         if (err) {
-            // done(err, 'Score Registration Failed!');
             res.json({ success: false, msg: 'Score Registration Failed! ' + err })
         } else {
             res.json({ success: true, msg: 'Score Registered!' })
         }
     })
+
 })
 
-// Get All Scores
 routerResults.get('/high-scores', (req, res, next) => {
 
+    // Get All Scores
     Result.find({}, function (err, items) {
         if (err) {
             console.log(err)
@@ -36,6 +37,7 @@ routerResults.get('/high-scores', (req, res, next) => {
             res.json({ results: items })
         }
     })
+
 })
 
 // Export this Module

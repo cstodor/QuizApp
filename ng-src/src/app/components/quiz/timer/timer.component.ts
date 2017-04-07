@@ -10,7 +10,7 @@ import { QuizService } from '../quiz.service';
 })
 export class TimerComponent implements OnInit {
 
-  secLeft: any; // get time from msLeft variable
+  secLeft: any;
 
   constructor(private _quizService: QuizService) { }
 
@@ -49,7 +49,7 @@ export class TimerComponent implements OnInit {
 
     }
 
-    countdown("timer", 0, 10);
+    countdown("timer", 1, 0);
   }
 
   ngDoCheck() {
