@@ -15,7 +15,11 @@ This repository contains the code for a RESTful API Quiz Application that was bu
 <li>MongoDB - Download and Install <a href="http://www.mongodb.org/downloads" target="_blank">MongoDB</a> - Make sure it's running on the default port (27017).</li>
 </ul>
 
-<h2>Tools Prerequisites</h2>
+# Additional Packages
 <ul>
-<li>NPM - Node.js package manager, should be installed when you install node.js.</li>
+<li>Express - web application framework for NodeJS.</li>
+<li>Mongoose - a NodeJS library that provides MongoDB object mapping.</li>
+<li>Body Parser - populates req.body with the value of the POST parameter.</li>
+<li>CORS - Cross-Origin Resource Sharing. Enables requests of resources from a different domain.</li>
+<li>Angular 4 - a structural framework for dynamic web apps.<li>
 </ul>
