@@ -9,13 +9,11 @@ This repository contains the code for a RESTful API that was built using the MEA
 <li>NodeJS</li>
 </ul>
 
-
 # Prerequisites
 <ul>
 <li>NodeJS - Download and Install <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a>. You can find free NodeJS tutorials at <a href="https://nodeschool.io/" target="_blank">nodeschool.io</a> to get you started.</li>
 <li>MongoDB - Download and Install <a href="http://www.mongodb.org/downloads" target="_blank">MongoDB</a> - Make sure it's running on the default port (27017).</li>
 </ul>
-
 
 # Additional Packages
 <ul>
@@ -25,3 +23,12 @@ This repository contains the code for a RESTful API that was built using the MEA
 <li>CORS - Cross-Origin Resource Sharing. Enables requests of resources from a different domain.</li>
 <li>Angular 4 - a structural JavaScript framework for dynamic web apps.</li>
 </ul>
+
+# Quick Install
+<p>The quickest way to get started is to clone the project and utilize it like this:</p>
+<p>Install dependencies from root folder using your command line:</p>
+<pre><code>npm install</code></pre>
+<p>After installation is finished use:</p>
+<pre><code>node server</code></pre>
+<p>Then open your browser and go to:</p>
+<pre><code>http://localhost:5000</code></pre>
