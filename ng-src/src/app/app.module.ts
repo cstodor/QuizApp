@@ -15,6 +15,7 @@ import { QuestionsAnswersComponent } from './components/quiz/questions-answers/q
 import { ResultsComponent } from './components/quiz/results/results.component';
 import { HighScoresComponent } from './components/high-scores/high-scores.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { Error404Component } from './components/error-404/error-404.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ResultsComponent,
     HighScoresComponent,
     ProfileComponent
+    Error404Component,
   ],
   imports: [
     BrowserModule,
