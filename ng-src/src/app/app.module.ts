@@ -14,6 +14,7 @@ import { TimerComponent } from './components/quiz/timer/timer.component';
 import { QuestionsAnswersComponent } from './components/quiz/questions-answers/questions-answers.component';
 import { ResultsComponent } from './components/quiz/results/results.component';
 import { HighScoresComponent } from './components/high-scores/high-scores.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HighScoresComponent } from './components/high-scores/high-scores.compon
     TimerComponent,
     QuestionsAnswersComponent,
     ResultsComponent,
-    HighScoresComponent
+    HighScoresComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
