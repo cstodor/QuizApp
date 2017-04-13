@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    background: #fff;
+}
+:host > nav {
+    display: inline-block;
+}
+li {
+    list-style: none;
+}
+/* Main Menu */
+.main-menu ul > li {
+    display: inline-block;
+}
+/* Profile Menu */
+.profile-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.profile-menu > ul {
+    padding: 0 2rem;
+}
+.profile-menu .img-circle {
+    position: absolute;
+    top: 10px;
+}
+.profile-menu span.username {
+    padding-left: 2rem;
+}
+.profile-menu .dropdown-menu {
+    position: absolute;
+    padding: 1rem 0;
+}

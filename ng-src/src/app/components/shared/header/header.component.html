@@ -1,0 +1,32 @@
+<!--Main Navigation-->
+<nav class="main-menu">
+    <ul>
+        <li *ngIf="auth.authenticated()">
+            <a routerLink="/">Quizes</a>
+        </li>
+        <li *ngIf="!auth.authenticated()">
+            <a routerLink="#" (click)="auth.login()">Sign In</a>
+        </li>
+    </ul>
+</nav>
+<!--Profile Menu-->
+<nav class="profile-menu">
+    <ul>
+        <li *ngIf="auth.authenticated() && profile" (click)="toggleProfileMenu()">
+            <span>
+                <img class="img-circle" width="25" height="25" [src]="profile.picture" />
+                <span class="username">{{ profile.given_name }}</span>
+            </span>
+            <!-- Profile Menu Dropdown Elements-->
+            <ul *ngIf="isShowProfile" class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" routerLink="/profile">My Profile</a>
+                </li>
+                <div class="dropdown-divider"></div>
+                <li>
+                    <a class="dropdown-item" (click)="auth.logout()" routerLink="/">Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
