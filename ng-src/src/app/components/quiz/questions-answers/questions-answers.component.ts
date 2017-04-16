@@ -16,7 +16,7 @@ export class QuestionsAnswersComponent implements OnInit {
   quizScore: number = 0;
   secLeft: number = this._quizService.time;
 
-  constructor(private _quizService: QuizService) { }
+  constructor(public _quizService: QuizService) { }
 
   // selected options
   selected(elem: any) {
@@ -51,11 +51,7 @@ export class QuestionsAnswersComponent implements OnInit {
     this._quizService.quizScore(this.quizScore);
   }
 
-
   ngOnInit() {
-
-
-
     // get quiz data
     this._quizService.getQuizData().subscribe(quiz => {
       this._quiz = quiz.questions;
@@ -75,4 +71,5 @@ export class QuestionsAnswersComponent implements OnInit {
       this._quizService.quizScore(this.quizScore * 10)
     }
   }
+
 }

@@ -12,7 +12,7 @@ export class HighScoresComponent implements OnInit {
 
   highScores: any;
 
-  constructor(private _quizService: QuizService) { }
+  constructor(public _quizService: QuizService) { }
 
   ngOnInit() {
 
