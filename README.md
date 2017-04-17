@@ -12,7 +12,7 @@ This repository contains the code for a RESTful API that was built using the MEA
 # Prerequisites
 <ul>
 <li>NodeJS - Download and Install <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a>. You can find free NodeJS tutorials at <a href="https://nodeschool.io/" target="_blank">nodeschool.io</a> to get you started.</li>
-<li>MongoDB - Download and Install <a href="http://www.mongodb.org/downloads" target="_blank">MongoDB</a> - Make sure it's running on the default port (27017).</li>
+<li>MongoDB - Download and Install <a href="https://www.mongodb.org/downloads" target="_blank">MongoDB</a> - Make sure it's running on the default port (27017).</li>
 </ul>
 
 # Additional Packages
