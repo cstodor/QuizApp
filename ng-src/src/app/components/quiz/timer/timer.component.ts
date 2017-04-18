@@ -12,7 +12,7 @@ export class TimerComponent implements OnInit {
 
   secLeft: any;
 
-  constructor(private _quizService: QuizService) { }
+  constructor(public _quizService: QuizService) { }
 
   ngOnInit() {
 

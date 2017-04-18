@@ -5,6 +5,7 @@
     <h2 class="title">Do you think you are smart enough?</h2>
     <p>Let's find out. Click the Start Quiz button below to start the quiz.</p>
     <p>You will have 1 minute to answer 10 questions.</p>
-    <button class="btn-start btn-primary" routerLink="/quiz">START QUIZ</button>
+    <button *ngIf="auth.authenticated()" class="btn-start btn-primary" routerLink="/quiz">START QUIZ</button>
+    <button *ngIf="!auth.authenticated()" class="btn-start btn-primary" (click)="auth.login()">LOG IN TO TAKE QUIZ</button>
     <button class="btn-scores btn-primary" routerLink="/high-scores">HIGH SCORES</button>
 </div>

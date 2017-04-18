@@ -11,9 +11,9 @@ import { QuizService } from './quiz.service';
 export class QuizComponent {
 
   score: number = null;
-  isQuizDone: boolean = false;
+  isQuizDone = false;
 
-  constructor(private _quizService: QuizService) { }
+  constructor(public _quizService: QuizService) { }
 
   // handleScore() triggered by sendScore Event, sent from Results Component
   handleScore(data: number) {

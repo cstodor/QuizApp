@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/cor
 import { Router } from '@angular/router';
 // Service
 import { QuizService } from '../quiz.service';
+import { Auth } from "../../auth/auth.service";
 
 @Component({
   selector: 'app-results',
@@ -12,30 +13,27 @@ export class ResultsComponent implements OnInit {
 
   quizScore: number = null;
   @Output() scoreSend = new EventEmitter<number>();
-  name: String;
+  profile: any;
 
   constructor(
-    private _quizService: QuizService,
-    private router: Router) { }
+    public _quizService: QuizService,
+    public router: Router,
+    public auth: Auth
+  ) { }
 
   ngOnInit() {
     // Get Current Score
     this.quizScore = this._quizService.score;
+    this.profile = JSON.parse(localStorage.getItem('profile'));
   }
 
   registerScore() {
 
     // result object
     const result = {
-      name: this.name,
+      name: this.profile.given_name,
       score: this.quizScore,
       date: new Date()
-    }
-
-    // Name is required!
-    if (!this._quizService.validateName(result)) {
-      console.log('Please enter your name!');
-      return false;
     }
 
     // result object registration 
@@ -50,10 +48,9 @@ export class ResultsComponent implements OnInit {
       });
   }
 
-
   // Send Score to Quiz Component (parent)
   sendScore() {
-    console.log("sendScore()")
+    console.log("sendScore()");
     this.scoreSend.emit(this.quizScore);
   }
 
@@ -62,6 +59,5 @@ export class ResultsComponent implements OnInit {
     this._quizService.quizScore(null);
     this._quizService.quizDone(false);
   }
-
 
 }
