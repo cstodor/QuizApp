@@ -10,10 +10,10 @@
     "author": "Csaba S. Todor",
     "license": "ISC",
     "dependencies": {
-        "express": "*",
-        "body-parser": "1.17.1",
-        "cors": "*",
-        "mongoose": "*"
+        "express": "4.15.3",
+        "body-parser": "1.17.2",
+        "cors": "2.8.3",
+        "mongoose": "4.10.7"
     },
     "repository": {
         "type": "git",
