@@ -32,7 +32,7 @@ This repository contains the code for a RESTful API that was built using the MEA
 <p><em>optionally you can install <a href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon</a> which will monitor your source code and automatically restarts your server when detects any changes. To install nodemon use:</em></p>
 <pre><code><em>npm install -g nodemon</em></code></pre>
 <p>2. Add Your Auth0 Credentials</p>
-<p>open the <code>environment.ts</code> and <code>environment.prod.ts</code> files and add your Auth0 Client ID and Auth0 Domain name.</p>
+<p>open the <code>environment.ts</code> and <code>environment.prod.ts</code> files located at <code>ng-src/src/environments/</code> folder, and add your Auth0 Client ID and Auth0 Domain name.</p>
 <p>3. After installation is finished use:</p>
 <pre><code>node server</code></pre>
 <p><em>or use this command if you've installed nodemon:</em></p>
