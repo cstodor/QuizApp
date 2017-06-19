@@ -5,7 +5,7 @@ This repository contains the code for a RESTful API that was built using the MEA
 <ul>
 <li>MongoDB</li>
 <li>Express</li>
-<li>AngularJS (v.4.0.1)</li>
+<li>Angular (v.4.0.1)</li>
 <li>NodeJS</li>
 </ul>
 
