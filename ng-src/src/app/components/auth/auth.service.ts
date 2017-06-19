@@ -1,16 +1,21 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { environment } from "../../../environments/environment";
 import { tokenNotExpired } from 'angular2-jwt';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
 
+// Auth0 Credentials
+const AUTH0_CLIENT_ID = environment.AUTH0_CLIENT_ID;
+const AOTH0_DOMAIN = environment.AUTH0_DOMAIN;
+
 @Injectable()
 export class Auth {
 
   // Configure Auth0
-  // lock = new Auth0Lock('CLIENT ID', 'DOMAIN NAME', {OPTIONS(OPTIONAL)});
+  lock = new Auth0Lock(AUTH0_CLIENT_ID, AOTH0_DOMAIN);
 
   // Store profile object in auth class
   userProfile: Object;
@@ -47,13 +52,16 @@ export class Auth {
       .events
       .filter(event => event instanceof NavigationStart)
       .filter((event: NavigationStart) => (/access_token|id_token|error/).test(event.url))
-      .subscribe(() => {
+      .subscribe(() => { res => 
+        console.log(res);
+        
         this.lock.resumeAuth(window.location.hash, (error, authResult) => {
           if (error) return console.log(error);
           localStorage.setItem('id_token', authResult.idToken);
           this.router.navigate(['/']);
         });
-      });
+      })
+
   }
 
   public login() {
